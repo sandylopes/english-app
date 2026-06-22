@@ -241,8 +241,8 @@ function rateCard(card, rating) { // rating: 'again'|'hard'|'good'|'easy'
 }
 
 // ── STORAGE ───────────────────────────────────────────────────────────────────
-async function load(k) { try { const r=await window.storage.get(k); return r?JSON.parse(r.value):null; } catch { return null; } }
-async function save(k,v) { try { await window.storage.set(k,JSON.stringify(v)); } catch {} }
+async function load(k) { try { const r=localStorage.getItem(k); return r?JSON.parse(r):null; } catch { return null; } }
+async function save(k,v) { try { localStorage.setItem(k,JSON.stringify(v)); } catch {} }
 
 function pad(n) { return String(n).padStart(2,"0"); }
 function todayStr() { const d=new Date(); return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`; }
